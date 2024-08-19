@@ -12,7 +12,7 @@ export const Cartprovider = ({ children }) => {
     useEffect(()=>{
 
         fetch('https://shopmart-app-backend.onrender.com/db',{credentials:'include'}).then(res=>res.json()).then(data=>{
-          console.log(data)
+        console.log('hello cart')
           setcart(data.db)
         })
         
