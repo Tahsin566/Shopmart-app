@@ -22,7 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-paths
 app-template.jsx
 car_pic_link.txt
 firebase.config.js
