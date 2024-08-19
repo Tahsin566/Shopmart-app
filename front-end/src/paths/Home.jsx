@@ -70,7 +70,6 @@ const Home = () => {
               setvisible(false)
               await delcart()
               await localStorage.removeItem('user')
-
               fetch('https://shopmart-app-backend.onrender.com/logout', { credentials: 'include' }).then(res => res.json()).then(data => {
                 if(data.logout){
                   

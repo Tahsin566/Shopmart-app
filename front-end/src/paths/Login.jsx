@@ -31,11 +31,11 @@ const Login = () => {
           credentials: 'include',
           headers:{"Authorization":`Bearer ${email}`}
         }).then(res => res.json()).then(data => {
-          // console.log(data)
+          
         })
       }
 
-      localStorage.setItem('user',JSON.stringify({name:"Tahsin",email:"nazmul544@gmail.com"}))
+      localStorage.setItem('user',JSON.stringify({name:"Tahsin",email:`${email}`}))
 
     })
   }, [])
