@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.img{
+    background-image: url('../public/pbg.png');
+    background-color: indigo;
+    background-size: contain;
+    height: 96vh;
+}
+
+button{
+    cursor: pointer;
+}
+button:active{
+    background-color: purple;
+}
