@@ -16,7 +16,7 @@ const Login = () => {
   useEffect(() => {
 
     
-    fetch('http://localhost:3000/dashboard', { credentials: 'include' }).then(res => res.json()).then(data => {
+    fetch('https://shopmart-app-backend.onrender.com/dashboard', { credentials: 'include' }).then(res => res.json()).then(data => {
 
       if (data.found) {
         navigate('/home')
@@ -27,7 +27,7 @@ const Login = () => {
 
   const handlelogin = () => {
 
-    fetch('http://localhost:3000/login',
+    fetch('https://shopmart-app-backend.onrender.com/login',
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

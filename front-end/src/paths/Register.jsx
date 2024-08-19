@@ -17,7 +17,7 @@ const Register = () => {
 
   const handlereg = ()=>{
     
-    fetch('http://localhost:3000/register',
+    fetch('https://shopmart-app-backend.onrender.com/register',
     {
       method:"POST",
       headers:{"Content-Type":"application/json"},

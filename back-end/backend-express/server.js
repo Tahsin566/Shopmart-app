@@ -54,7 +54,6 @@ app.post('/register', async (req, res) => {
 
 
     const user = await User.findOne({ email: email })
-    console.log(user)
 
 
     if (user) {
@@ -144,7 +143,6 @@ app.get('/db',async(req,res)=>{
 
     const data = await Products.find({email:email}).sort()
 
-    console.log(data)
 
     res.json({db:data})
     

@@ -16,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
 
-    fetch('http://localhost:3000/dashboard', { credentials: 'include' }).then(res => res.json()).then(data => {
+    fetch('https://shopmart-app-backend.onrender.com/dashboard', { credentials: 'include' }).then(res => res.json()).then(data => {
       if (!data.found) {
         navigate('/')
       }
@@ -28,7 +28,7 @@ const Home = () => {
   }, [])
 
   const delcart = () =>{
-    fetch('http://localhost:3000/remove',{credentials:'include'}).then(res=>res.json()).then(data=>{
+    fetch('https://shopmart-app-backend.onrender.com/remove',{credentials:'include'}).then(res=>res.json()).then(data=>{
       console.log(data)
     })
   }
@@ -46,7 +46,7 @@ const Home = () => {
         <div style={{ display: 'flex', justifyContent: 'space-between', gap: '10px', alignItems: 'center' }}>
           <div>Home</div>
           <Button onClick={() => {
-            fetch('http://localhost:3000/add', {
+            fetch('https://shopmart-app-backend.onrender.com/add', {
               method: "POST",
               credentials: 'include',
               headers: { "Content-Type": "application/json" },
@@ -70,8 +70,8 @@ const Home = () => {
               setvisible(false)
               await delcart()
               await localStorage.removeItem('user')
-              
-              fetch('http://localhost:3000/logout', { credentials: 'include' }).then(res => res.json()).then(data => {
+
+              fetch('https://shopmart-app-backend.onrender.com/logout', { credentials: 'include' }).then(res => res.json()).then(data => {
                 if (data.logout) {
                   navigate('/')
                 }

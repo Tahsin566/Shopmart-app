@@ -17,13 +17,13 @@ const Prodcart = () => {
 
   useEffect(() => {
 
-    fetch('http://localhost:3000/dashboard', { credentials: 'include' }).then(res => res.json()).then(data => {
+    fetch('https://shopmart-app-backend.onrender.com/dashboard', { credentials: 'include' }).then(res => res.json()).then(data => {
       if (!data.found) {
         navigate('/')
       }
     })
 
-    fetch('http://localhost:3000/db', { credentials: 'include' }).then(res => res.json()).then(data => {
+    fetch('https://shopmart-app-backend.onrender.com/db', {credentials: 'include'}).then(res => res.json()).then(data => {
       console.log(data)
       if (data.db) {
         setloading(false)
@@ -42,7 +42,7 @@ const Prodcart = () => {
     }
 
 
-    const response = await fetch('http://localhost:3000/payment',
+    const response = await fetch('https://shopmart-app-backend.onrender.com/payment',
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -60,7 +60,7 @@ const Prodcart = () => {
 
   const savecart = () => {
 
-    fetch('http://localhost:3000/add', {
+    fetch('https://shopmart-app-backend.onrender.com/add', {
       method: "POST",
       credentials: 'include',
       headers: { "Content-Type": "application/json" },
@@ -133,7 +133,7 @@ const Prodcart = () => {
         <Button onClick={() => {
           console.log(cart.items)
           // localStorage.setItem('cart', JSON.stringify(cart.items))
-          fetch('http://localhost:3000/add', {
+          fetch('https://shopmart-app-backend.onrender.com/add', {
             method: "POST",
             credentials: 'include',
             headers: { "Content-Type": "application/json" },
