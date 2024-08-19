@@ -152,10 +152,11 @@ app.get('/remove',async(req,res)=>{
 
     const {token} = req.cookies
 
-    const mail = req.headers['authorization'].split(' ')[1]
-    
+
+    let mail = "hello"
     
     if(!token){
+        mail = req.headers['authorization']?.split(' ')[1]
         await Products.deleteMany({email:mail})
         return res.json({found:false})
     }

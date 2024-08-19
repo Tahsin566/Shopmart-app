@@ -6,6 +6,7 @@ const Login = () => {
 
   const navigate = useNavigate()
   const [email, setemail] = useState('')
+  const [loading,setloading] = useState(null)
   const [password, setpassword] = useState('')
 
   const data = {
@@ -30,9 +31,11 @@ const Login = () => {
           credentials: 'include',
           headers:{"Authorization":`Bearer ${email}`}
         }).then(res => res.json()).then(data => {
-          console.log(data)
+          // console.log(data)
         })
       }
+
+      localStorage.setItem('user',JSON.stringify({name:"Tahsin",email:"nazmul544@gmail.com"}))
 
     })
   }, [])
@@ -69,6 +72,7 @@ const Login = () => {
           </div>
           <Button onClick={handlelogin} style={{ marginTop: '10px', width: '200px' }}>Login</Button>
           <Button onClick={() => { navigate('/register') }} style={{ marginTop: '10px', width: '200px' }}>Sign up</Button>
+          {loading && <div style={{textAlign:'center'}}>Loading</div>}
         </div>
       </div>
     </>

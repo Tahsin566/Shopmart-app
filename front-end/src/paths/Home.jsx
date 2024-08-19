@@ -72,9 +72,12 @@ const Home = () => {
               await localStorage.removeItem('user')
 
               fetch('https://shopmart-app-backend.onrender.com/logout', { credentials: 'include' }).then(res => res.json()).then(data => {
-                if (data.logout) {
+                if(data.logout){
+                  
                   navigate('/')
+
                 }
+              
               })
 
             }}>Sign out</Button>
