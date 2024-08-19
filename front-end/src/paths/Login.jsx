@@ -15,11 +15,23 @@ const Login = () => {
 
   useEffect(() => {
 
+    let email = localStorage.getItem('user')
+    email = JSON.parse(email)?.email
+    console.log(email)
     
+
     fetch('https://shopmart-app-backend.onrender.com/dashboard', { credentials: 'include' }).then(res => res.json()).then(data => {
 
       if (data.found) {
         navigate('/home')
+      }
+      else if (!data.found) {
+        fetch('https://shopmart-app-backend.onrender.com/remove', {
+          credentials: 'include',
+          headers:{"Authorization":`Bearer ${email}`}
+        }).then(res => res.json()).then(data => {
+          console.log(data)
+        })
       }
 
     })
@@ -36,7 +48,7 @@ const Login = () => {
       }
     ).then(res => res.json()).then(data => {
       if (data.login === true) {
-        localStorage.setItem('user',JSON.stringify({name:data.name,email:data.email}))
+        localStorage.setItem('user', JSON.stringify({ name: data.name, email: data.email }))
         navigate('/home')
       }
     })
@@ -56,7 +68,7 @@ const Login = () => {
             <input type="password" style={{ width: '100%', height: '35px', borderWidth: '1px', borderColor: 'gray', borderRadius: '5px', padding: '4px' }} placeholder='Enter password' value={password} onChange={(e) => { setpassword(e.target.value) }} />
           </div>
           <Button onClick={handlelogin} style={{ marginTop: '10px', width: '200px' }}>Login</Button>
-          <Button onClick={()=>{navigate('/register')}} style={{ marginTop: '10px', width: '200px' }}>Sign up</Button>
+          <Button onClick={() => { navigate('/register') }} style={{ marginTop: '10px', width: '200px' }}>Sign up</Button>
         </div>
       </div>
     </>
