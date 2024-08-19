@@ -23,14 +23,9 @@ const Prodcart = () => {
       }
     })
 
-    fetch('https://shopmart-app-backend.onrender.com/db', {credentials: 'include'}).then(res => res.json()).then(data => {
-      console.log(data)
-      if (data.db) {
-        setloading(false)
-      }
-      setinfo(data.db)
-    })
-
+    setTimeout(() => {
+      setloading(false)
+    }, 200);
   }, [])
 
   const handlecheckout = async () => {
