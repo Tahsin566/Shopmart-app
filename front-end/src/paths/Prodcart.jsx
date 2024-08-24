@@ -62,7 +62,7 @@ const Prodcart = () => {
       body: JSON.stringify(cart.items)
     }).then(res => res.json()).then(data => {
       if (data.update) {
-        alert('cart saved')
+        alert('cart saved,close to proceed to payment')
       }
     })
   }
