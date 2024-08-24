@@ -150,6 +150,9 @@ app.get('/db',async(req,res)=>{
 
 app.get('/remove',async(req,res)=>{
     
+    const {token} = req.cookies
+    
+
     if(!token){
         return res.json({found:false})
     }
