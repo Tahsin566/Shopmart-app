@@ -7,6 +7,8 @@ import Login from './paths/Login'
 import Prodcart from './paths/Prodcart'
 import Register from './paths/Register'
 import Home from './paths/Home'
+import Success from './paths/Success'
+import Cancel from './paths/Cancel'
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route path='/cart' Component={Prodcart}/>
         <Route path='/register' Component={Register}/>
         <Route path='/home' Component={Home}/>
+        <Route path='/success' Component={Success}/>
+        <Route path='/cancel' Component={Cancel}/>
 
       </Routes>
 

@@ -16,26 +16,12 @@ const Login = () => {
 
   useEffect(() => {
 
-    let email = localStorage.getItem('user')
-    email = JSON.parse(email)?.email
-    console.log(email)
     
-
     fetch('https://shopmart-app-backend.onrender.com/dashboard', { credentials: 'include' }).then(res => res.json()).then(data => {
 
       if (data.found) {
         navigate('/home')
       }
-      else if (!data.found) {
-        fetch('https://shopmart-app-backend.onrender.com/remove', {
-          credentials: 'include',
-          headers:{"Authorization":`Bearer ${email}`}
-        }).then(res => res.json()).then(data => {
-          
-        })
-      }
-
-      localStorage.setItem('user',JSON.stringify({name:"Tahsin",email:`${email}`}))
 
     })
   }, [])

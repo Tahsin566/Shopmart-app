@@ -149,15 +149,8 @@ app.get('/db',async(req,res)=>{
 })
 
 app.get('/remove',async(req,res)=>{
-
-    const {token} = req.cookies
-
-
-    let mail = "hello"
     
     if(!token){
-        mail = req.headers['authorization']?.split(' ')[1]
-        await Products.deleteMany({email:mail})
         return res.json({found:false})
     }
 
@@ -191,8 +184,8 @@ app.post('/payment',async(req,res)=>{
         payment_method_types:["card"],
         line_items:lineitems,
         mode:"payment",
-        success_url:"http://localhost:5173/home",
-        cancel_url:"http://localhost:5173/home"
+        success_url:"https://shopmart-commerce.netlify.app/success",
+        cancel_url:"https://shopmart-commerce.netlify.app/cancel"
     })
 
     console.log('products',products)
@@ -215,11 +208,15 @@ app.post('/add', async (req, res) => {
 
     const {token} = req.cookies
 
+    if(!token){
+        return res.json({token:false})
+    }
+
     let email = await jwt.verify(token,process.env.ACCESS_TOKEN_SECRET)
     email = email.email
 
     if(arr.length === 0){
-        const del = await Products.deleteMany({email})
+        await Products.deleteMany({email})
         
         return res.json({empty:true})
     }
@@ -227,7 +224,8 @@ app.post('/add', async (req, res) => {
     const user = await Products.findOne({email})
 
     if(user){
-        const prod = await Products.deleteMany({email})
+
+        await Products.deleteMany({email})
 
         await Products.create(arr)
 
