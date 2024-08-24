@@ -92,7 +92,7 @@ app.post('/login', async (req, res) => {
 
         const token = await jwt.sign({ email }, process.env.ACCESS_TOKEN_SECRET)
 
-        res.cookie("token", token, { httpOnly: true, sameSite: 'none', secure: true }).json({
+        res.cookie("token", token, { httpOnly: true, sameSite: 'none', secure: true,expires:new Date(Date.now() + 7 * 24 * 60 * 60 * 1000 ) }).json({
 
             login:true,
             email:user.email,
