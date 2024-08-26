@@ -91,7 +91,10 @@ const Prodcart = () => {
   return (
 
     <Container fluid style={{ padding: '3px', marginBottom: '120px' }}>
-      {
+      {cart.items.length === 0 ? 
+      <div style={{display:'flex',justifyContent:'center',alignItems:'center',height:'80vh'}}>
+        <div>Cart Empty</div>
+      </div> : 
         cart?.items?.map((item, index) => (
           <div key={index} style={{ display: 'flex', gap: '5px', minHeight: '150px', borderWidth: '1px', borderColor: 'gray', padding: '5px', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
@@ -118,9 +121,10 @@ const Prodcart = () => {
             </div>
           </div>
         ))
+        
       }
 
-      {cart.gettotalprice() === 0 && <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' }}>Cart empty</div>}
+      
 
       <Container fluid style={{ position: 'fixed', bottom: 0, backgroundColor: 'silver', display: 'flex', justifyContent: 'space-between', padding: '8px', flexWrap: 'wrap' }}>
         <p>Total cost : {cart.gettotalprice()} BDT</p>
